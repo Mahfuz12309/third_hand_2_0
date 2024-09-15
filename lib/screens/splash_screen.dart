@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:third_hand_2_0/constants/colors.dart';
-import 'package:third_hand_2_0/screens/main_navigatiion_screen.dart';
 import 'package:third_hand_2_0/screens/welcome_screen.dart';
 import 'package:third_hand_2_0/services/auth.dart';
 

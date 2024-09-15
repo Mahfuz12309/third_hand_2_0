@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     searchController = TextEditingController();
     searchNode = FocusNode();
-    _controller = CarouselController();
+    // _controller = CarouselController();
     super.initState();
   }
 

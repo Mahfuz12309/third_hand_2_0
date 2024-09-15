@@ -19,7 +19,7 @@ import '../provider/category_provider.dart';
 class UserFormReview extends StatefulWidget {
   static const screenId = 'user_form_review_screen';
 
-  const UserFormReview({Key? key}) : super(key: key);
+  const UserFormReview({super.key});
 
   @override
   State<UserFormReview> createState() => _UserFormReviewState();
@@ -71,13 +71,17 @@ class _UserFormReviewState extends State<UserFormReview> {
     _addressNode = FocusNode();
     firebaseUser.getUserData().then((value) {
       setState(() {
-        print(value);
+        if (kDebugMode) {
+          print(value);
+        }
         _nameController.text = value['name'] ?? '';
         _phoneNumberController.text = value['mobile'].substring(3) ?? '';
         _emailController.text = value['email'] ?? '';
         _addressController.text = value['address'] ?? value['address'];
       });
-      print("valus is ${value['mobile']}");
+      if (kDebugMode) {
+        print("valus is ${value['mobile']}");
+      }
     });
   }
 
@@ -219,7 +223,9 @@ class _UserFormReviewState extends State<UserFormReview> {
                                   },
                                   context)
                               .whenComplete(() {
-                            print('uploaded');
+                            if (kDebugMode) {
+                              print('uploaded');
+                            }
                           });
                         },
                         child: const Text(

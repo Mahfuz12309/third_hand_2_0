@@ -115,6 +115,7 @@ class Auth {
           await _firebaseAuth.signInWithCredential(credential);
 
       Navigator.pop(context);
+      // ignore: unnecessary_null_comparison
       if (userCredential != null) {
         getAdminCredentialPhoneNumber(context, userCredential.user);
       } else {

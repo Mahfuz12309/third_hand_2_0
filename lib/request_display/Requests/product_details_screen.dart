@@ -127,333 +127,331 @@ class _ProductDetailState extends State<ProductDetail> {
     required NumberFormat numberFormat,
   }) {
     return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 450,
-                        color: Colors.transparent,
-                        child: _loading
-                            ? Center(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    CircularProgressIndicator(
-                                      color: secondaryColor,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'Loading..',
-                                    )
-                                  ],
-                                ),
-                              )
-                            : Stack(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 450,
+                      color: Colors.transparent,
+                      child: _loading
+                          ? Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Center(
-                                    child: Image.network(
-                                      data['images'][_index],
-                                    ),
+                                  CircularProgressIndicator(
+                                    color: secondaryColor,
                                   ),
-                                  Positioned(
-                                    bottom: 0,
-                                    child: Container(
-                                      height: 60,
-                                      color: whiteColor,
-                                      width: MediaQuery.of(context).size.width,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: ListView.builder(
-                                            physics: ScrollPhysics(),
-                                            scrollDirection: Axis.horizontal,
-                                            itemCount: data['images'].length,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return InkWell(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _index = index;
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: 100,
-                                                  color: whiteColor,
-                                                  child: Image.network(
-                                                      data['images'][index]),
-                                                ),
-                                              );
-                                            }),
-                                      ),
-                                    ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Loading..',
                                   )
                                 ],
                               ),
-                      ),
-                      _loading
-                          ? Container()
-                          : Container(
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          data['title'].toUpperCase(),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                       
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Text(
-                                      'Urgency level: ${formattedPrice}',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    
-                                    Text(
-                                      'Description',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(data['description']),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                    horizontal: 15,
-                                                    vertical: 10,
-                                                  ),
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  color: disabledColor
-                                                      .withOpacity(0.3),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                     
-                                                      
-                                                          
-                                                      
-                                                          
-                                                           SizedBox(),
-                                                      Text(
-                                                        'Posted At: ${formattedDate}',
-                                                        style: TextStyle(
-                                                          color: blackColor,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Divider(
-                                      color: blackColor,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundColor: primaryColor,
-                                          radius: 40,
-                                          child: CircleAvatar(
-                                            backgroundColor: secondaryColor,
-                                            radius: 37,
-                                            child: Icon(
-                                              CupertinoIcons.person,
-                                              color: whiteColor,
-                                              size: 40,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Expanded(
-                                          child: ListTile(
-                                            title: Text(
-                                              productProvider
-                                                  .sellerDetails!['name']
-                                                  .toUpperCase(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18,
-                                                  overflow:
-                                                      TextOverflow.ellipsis),
-                                            ),
-                                            subtitle: Text(
-                                              'View Profile',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: linkColor,
-                                              ),
-                                            ),
-                                            trailing: IconButton(
-                                                onPressed: () {},
-                                                icon: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  color: linkColor,
-                                                  size: 12,
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 10),
-                                    Divider(
-                                      color: blackColor,
-                                    ),
-                                    Text(
-                                      'Ad Post at:',
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      height: 200,
-                                      color: disabledColor.withOpacity(0.3),
-                                      child: Stack(
-                                        children: [
-                                          Center(
-                                            child: GoogleMap(
-                                              initialCameraPosition:
-                                                  CameraPosition(
-                                                zoom: 15,
-                                                target: LatLng(
-                                                  location.latitude,
-                                                  location.longitude,
-                                                ),
-                                              ),
-                                              mapType: MapType.normal,
-                                              onMapCreated: (GoogleMapController
-                                                  controller) {
+                            )
+                          : Stack(
+                              children: [
+                                Center(
+                                  child: Image.network(
+                                    data['images'][_index],
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  child: Container(
+                                    height: 60,
+                                    color: whiteColor,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ListView.builder(
+                                          physics: ScrollPhysics(),
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: data['images'].length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return InkWell(
+                                              onTap: () {
                                                 setState(() {
-                                                  _mapController = controller;
+                                                  _index = index;
                                                 });
                                               },
-                                            ),
-                                          ),
-                                          Center(
-                                              child: Icon(
-                                            Icons.location_pin,
-                                            color: Colors.red,
-                                            size: 35,
-                                          )),
-                                          Center(
-                                            child: CircleAvatar(
-                                              radius: 60,
-                                              backgroundColor:
-                                                  blackColor.withOpacity(0.1),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            right: 4,
-                                            top: 4,
-                                            child: Material(
-                                              elevation: 4,
-                                              shape: Border.all(
-                                                  color: disabledColor
-                                                      .withOpacity(0.2)),
-                                              child: IconButton(
-                                                icon: Icon(
-                                                  Icons.alt_route_outlined,
-                                                ),
-                                                onPressed: () async {
-                                                  await _mapLauncher(location);
-                                                },
+                                              child: Container(
+                                                width: 100,
+                                                color: whiteColor,
+                                                child: Image.network(
+                                                    data['images'][index]),
                                               ),
-                                            ),
-                                          )
-                                        ],
+                                            );
+                                          }),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                    ),
+                    _loading
+                        ? Container()
+                        : Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        data['title'].toUpperCase(),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
                                       ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                     
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 2,
+                                  ),
+                                  Text(
+                                    'Urgency level: ${formattedPrice}',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                    const SizedBox(
-                                      height: 10,
+                                  ),
+                                  
+                                  Text(
+                                    'Description',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Ad Id: ${data['posted_at']}',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(data['description']),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal: 15,
+                                                  vertical: 10,
+                                                ),
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                color: disabledColor
+                                                    .withOpacity(0.3),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                  children: [
+                                                   
+                                                    
+                                                        
+                                                    
+                                                        
+                                                         SizedBox(),
+                                                    Text(
+                                                      'Posted At: ${formattedDate}',
+                                                      style: TextStyle(
+                                                        color: blackColor,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            'REPORT AD',
-                                            style: TextStyle(color: linkColor),
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: blackColor,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: primaryColor,
+                                        radius: 40,
+                                        child: CircleAvatar(
+                                          backgroundColor: secondaryColor,
+                                          radius: 37,
+                                          child: Icon(
+                                            CupertinoIcons.person,
+                                            color: whiteColor,
+                                            size: 40,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: ListTile(
+                                          title: Text(
+                                            productProvider
+                                                .sellerDetails!['name']
+                                                .toUpperCase(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                          ),
+                                          subtitle: Text(
+                                            'View Profile',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: linkColor,
+                                            ),
+                                          ),
+                                          trailing: IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.arrow_forward_ios,
+                                                color: linkColor,
+                                                size: 12,
+                                              )),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Divider(
+                                    color: blackColor,
+                                  ),
+                                  Text(
+                                    'Ad Post at:',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    height: 200,
+                                    color: disabledColor.withOpacity(0.3),
+                                    child: Stack(
+                                      children: [
+                                        Center(
+                                          child: GoogleMap(
+                                            initialCameraPosition:
+                                                CameraPosition(
+                                              zoom: 15,
+                                              target: LatLng(
+                                                location.latitude,
+                                                location.longitude,
+                                              ),
+                                            ),
+                                            mapType: MapType.normal,
+                                            onMapCreated: (GoogleMapController
+                                                controller) {
+                                              setState(() {
+                                                _mapController = controller;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                        Center(
+                                            child: Icon(
+                                          Icons.location_pin,
+                                          color: Colors.red,
+                                          size: 35,
+                                        )),
+                                        Center(
+                                          child: CircleAvatar(
+                                            radius: 60,
+                                            backgroundColor:
+                                                blackColor.withOpacity(0.1),
+                                          ),
+                                        ),
+                                        Positioned(
+                                          right: 4,
+                                          top: 4,
+                                          child: Material(
+                                            elevation: 4,
+                                            shape: Border.all(
+                                                color: disabledColor
+                                                    .withOpacity(0.2)),
+                                            child: IconButton(
+                                              icon: Icon(
+                                                Icons.alt_route_outlined,
+                                              ),
+                                              onPressed: () async {
+                                                await _mapLauncher(location);
+                                              },
+                                            ),
                                           ),
                                         )
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 80,
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Ad Id: ${data['posted_at']}',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          'REPORT AD',
+                                          style: TextStyle(color: linkColor),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 80,
+                                  ),
+                                ],
                               ),
                             ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                          ),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

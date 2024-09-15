@@ -162,7 +162,7 @@ class _CommonFormState extends State<CommonForm> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 categoryProvider.imageUploadedUrls.isNotEmpty
@@ -171,12 +171,12 @@ class _CommonFormState extends State<CommonForm> {
                         numOfShowImages:
                             categoryProvider.imageUploadedUrls.length,
                         imageUrls: categoryProvider.imageUploadedUrls)
-                    : SizedBox(),
+                    : const SizedBox(),
                 Text(
                   "upload an image of your so that people can recongnize you when you meet*",
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.red.shade900),
-                ),SizedBox(height: 10,),
+                ),const SizedBox(height: 10,),
                 TextFormField(
                     controller: _priceController,
                     focusNode: _priceNode,

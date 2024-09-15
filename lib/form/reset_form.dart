@@ -10,8 +10,8 @@ import 'package:third_hand_2_0/services/auth.dart';
 
 class ResetForm extends StatefulWidget {
   const ResetForm({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<ResetForm> createState() => _ResetFormState();

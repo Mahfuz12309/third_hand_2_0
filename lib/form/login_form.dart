@@ -12,8 +12,8 @@ import 'package:third_hand_2_0/services/auth.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<LogInForm> createState() => _LogInFormState();
